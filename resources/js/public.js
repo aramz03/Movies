@@ -1,28 +1,14 @@
-window.addEventListener("load", () => {
-  let BtnAcco = document.querySelectorAll('.btn_acco');
-
-  BtnAcco.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      let JsTop = this.parentNode;
-      let JsBtm = JsTop.nextElementSibling;
-      let pHeight = 0;
-     
-      // 하단 모든 p의 높이값 더하기
-      JsBtm.querySelectorAll('p').forEach(function(p){
-        pHeight += p.clientHeight ;
-      });
-
-      this.classList.toggle("on");
-      if (this.classList.contains("on")) {
-        this.querySelector("span").textContent = "닫기";
-        JsBtm.classList.add("on");
-        JsBtm.style.height = pHeight+'px';
-      } else {
-        this.querySelector("span").textContent = "열기";
-        JsBtm.classList.remove("on");
-        JsBtm.style.height = 0;
-      }
-    });
+$(window).on('load', function () {
+  //nav 클릭
+  $('nav li').click(function () {
+    $(this).addClass("on").siblings().removeClass("on");
   });
-
+  //info 클릭
+  $('.ib_img').click(function () {
+    $('.ib_list').toggleClass('on');
+  });
+  //js-taplist 클릭
+  $('.js-taplist li').click(function () {
+    $(this).addClass("on").siblings().removeClass("on");
+  });
 });

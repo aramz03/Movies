@@ -47,6 +47,31 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+ }
+ 
+ @font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+ }
+ 
+ @font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 300;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+ }
+ 
+* {font-family: 'NanumBarunGothic', sans-serif !important;}
 body, html {height: 100%; width: 100%; overflow: hidden; background: #f6f8fc; color: #202124;}
 input:disabled,
 button:disabled {opacity: .6;}
@@ -72,7 +97,16 @@ header .right {display: flex; align-items: center; justify-content: space-betwee
 .srh_box {display: flex; align-items: center; width: 300px; height: 42px; padding: 0 12px 0 24px; background: #fff; border-radius: 24px;}
 .srh_box input {width: 100%; height: 100%; background: 0; border: 0; font-size: 16px; outline: none;} 
 .srh_box button {height: 24px; width: 24px; padding: 0; border: 0; background: 0; flex-shrink: 0;} 
-.ib_img {width: 38px; height: 38px; background-color: #ccc; background-image: url(../../resources/images/icon_id.png); background-repeat: no-repeat; background-position: center; background-size: 28px; border-radius: 50%;}
+.ib_img {position: relative; width: 38px; height: 38px; background-color: #ccc; background-image: url(../../resources/images/icon_id.png); background-repeat: no-repeat; background-position: center; background-size: 28px; border-radius: 50%;}
+.ib_list {position: absolute; top: 54px; right: 0; padding: 20px; background: #fff; border-radius: 5px; box-shadow: 0 3px 3px rgba(0,0,0,.6); display: none;}
+.ib_list li {margin-bottom: 16px; text-align: right;}
+.ib_list li:last-of-type {margin-bottom: 0;}
+.ib_list a {font-size: 16px; color: #000; text-decoration: none; white-space: nowrap; transition: color .2s;}
+.ib_list a:hover {font-weight: 700; color: #FD9F28;}
+.ib_list.on {display: block;}
+.ib_list:after {content: ''; position: absolute; top: -18px; right: 5px; width: 0;height: 0; border-right: 10px solid transparent;border-left: 10px solid transparent; border-bottom: 10px solid #fff; border-top: 10px solid transparent;} 
+
+
 
 /*nav*/
 nav li {}
@@ -80,15 +114,65 @@ nav li a {display: flex; align-items: center; width: 100%; height: 38px; padding
 nav li p {height: 24px; padding-left: 8px; line-height: 24px;}
 nav li.on a {background: #d3e3fd; font-weight: 700;}
 
-/*메인*/
+/*페이지*/
 .booklist {}
 .booklist ul {display: grid; grid-template-columns: repeat(5, 1fr);  gap: 16px;}
 .booklist ul li {width: 100%; height: auto; aspect-ratio: 1/1.5; box-shadow: 0 3px 3px rgba(0,0,0,.6);}
 .bookimg {overflow: hidden; width: 100%; height: 100%;}
 .bookimg img {width: 100%; height: 100%; object-fit: cover;}
 
+.tab_main {display: flex; align-items: center; margin-bottom: 20px;}
+.tab_main li {overflow: hidden; position: relative; text-align: center;}
+.tab_main li a {display: block; padding: 8px 16px; color: #000; text-decoration: none;  transition: all .3s;}
+.tab_main li.on a {position: relative; color: #fff; z-index: 2;}
+.tab_main li:after {content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 100%; background: #FD9F28; z-index: 1; transition: all .1s;}
+.tab_main li.on:after {top: 0; transition: all cubic-bezier(.99,-0.08,.35,1.51) .6s;}
+
+
+
+
+
 /*로그인*/
 .loginwrap {width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.login {width: 300px;}
+.login > div {display: flex; align-items: center; padding-bottom: 30px;}
+.login label {display: inline-block; width: 80px; font-size: 14px; flex-shrink: 0;}
+.login input {width: 100%; height: 40px; padding: 0 16px; border: 1px solid #999; box-shadow: 0 0 0 transparent; background: 0; border-radius: 5px;}
+.btn_login {width: 100%; height: 40px; background: #d3e3fd; border: 0; color: #000; border-radius: 5px;}
+.linkwrap {display: flex; align-items: center; justify-content: center;}
+.linkwrap a {position: relative; margin-right: 20px; font-size: 14px; color: #666;}
+.linkwrap a:after {content: ''; position: absolute; top: 1px; right: -10px; width: 1px; height: 10px; background: #999;}
+.linkwrap a:last-of-type {margin-right: 0;}
+.linkwrap a:last-of-type:after {width: 0;}
+input:required {position: relative;}
+input:required:after {content: '*'; position: absolute; top: 0; right: 0; font-size: 15px; color: #f0f;}
+
+
+/*회원가입*/
+.join {width: 400px;}
+.join > div {display: flex; align-items: center; padding-bottom: 12px;}
+.join label {display: inline-block; width: 120px; font-size: 14px; flex-shrink: 0;}
+.join input {width: 100%; height: 30px; padding: 0 16px; border: 1px solid #999; box-shadow: 0 0 0 transparent; background: 0; border-radius: 5px;}
+.join .btn_login {margin-top: 18px;}
+
+/* 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) { 
+  .booklist ul {grid-template-columns: repeat(4, 1fr); gap: 16px;}
+}
+
+/* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
+@media all and (min-width:480px) and (max-width:767px) { 
+  .booklist ul {grid-template-columns: repeat(3, 1fr); gap: 12px;}
+}
+
+/* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+@media all and (max-width:479px) { 
+  .booklist ul {grid-template-columns: repeat(2, 1fr); gap: 12px;}
+}
+
+
+
+
 
 
 
