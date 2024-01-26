@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movies</title>
+  <title>Movies - 회원가입</title>
 
   <link rel="stylesheet" href="../../public/all.css">
   <script src="../../public/all.js"></script>
@@ -12,7 +12,6 @@
 
 <body>
   <div class="grid">
-    <!--  header -->
     <header>
       <div class="logo">
         <a href="./index.html"><img src="../../resources/images/logo.png" alt="로고"></a>
@@ -32,16 +31,11 @@
         </form>
         <div class="info_box">
           <div class="ib_img">
-            <ul class="ib_list">
-              <li><a href="./../login/index.html">로그인</a></li>
-              <li><a href="./../login/join.html">회원가입</a></li>
-            </ul>
+            <div></div>
           </div>
         </div>
       </div>
     </header>
-    <!-- // header -->
-    <!--  nav -->
     <nav>
       <ul>
         <li class="on">
@@ -49,14 +43,9 @@
             <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
               stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-              <path d="M8 4l0 16" />
-              <path d="M16 4l0 16" />
-              <path d="M4 8l4 0" />
-              <path d="M4 16l4 0" />
-              <path d="M4 12l16 0" />
-              <path d="M16 8l4 0" />
-              <path d="M16 16l4 0" />
+              <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
+              <path d="M19 16h-12a2 2 0 0 0 -2 2" />
+              <path d="M9 8h6" />
             </svg>
             <p>전체보기</p>
           </a>
@@ -76,28 +65,35 @@
               <path d="M7 13h.01" />
               <path d="M17 13h.01" />
             </svg>
-            <p>나의 영화</p>
+            <p>나의 책</p>
           </a>
         </li>
       </ul>
     </nav>
-    <!-- // nav -->
-
-    <!--  section -->
     <section>
       <div class="wrap">
-        <h2>오늘 뜨는 영화</h2>
-        <div class="movielist">
-          <ul id="allList">
-
-          </ul>
+        <div class="loginwrap">
+          <form class="join">
+            <div>
+              <label for="id">이메일</label>
+              <input type="email" id="id" required>
+            </div>
+            <div>
+              <label for="pw">비밀번호</label>
+              <input type="password" id="pw" required>
+            </div>
+            <div>
+              <label for="pw">비밀번호 확인</label>
+              <input type="password" id="pw" required>
+            </div>
+            <div>
+              <button type="submit" class="btn_login">회원가입</button>
+            </div>          
+          </form>
         </div>
       </div>
     </section>
-    <!-- // section -->
-
   </div>
-
 </body>
 
 </html>
