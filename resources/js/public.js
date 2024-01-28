@@ -1,4 +1,16 @@
 $(window).on('load', function () {
+  //테마 설정
+  var radios = document.getElementsByName('tchgRadio');
+  radios.forEach(function(radio){
+    radio.addEventListener('click',function(){
+      if(this.id == "lightmode"){
+        document.documentElement.setAttribute('color-theme','light')
+      }else if (this.id == "darkmode"){
+        document.documentElement.setAttribute('color-theme','dark')
+      }
+    });
+  })
+
   //nav 클릭
   $('nav li').click(function () {
     $(this).addClass("on").siblings().removeClass("on");

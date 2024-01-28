@@ -70,15 +70,26 @@ table {
   src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
   src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
  }
- 
+ :root {
+  --side-width: 280px;
+}
+ :root[color-theme='light'] {
+  --bg-color: #f6f8fc;
+  --txt-color: #202124;
+  --main-color: #FD9F28;
+}
+:root[color-theme='dark'] {
+  --bg-color: #303031;
+  --txt-color: #fff;
+  --main-color: #FD9F28;
+}
 * {font-family: 'NanumBarunGothic', sans-serif !important;}
-body, html {height: 100%; width: 100%; overflow: hidden; background: #f6f8fc; color: #202124;}
+body, html {height: 100%; width: 100%; overflow: hidden; background: var(--bg-color); color: var(--txt-color);}
 input:disabled,
 button:disabled {opacity: .6;}
 button {cursor: pointer;}
-:root {
-  --side-width: 280px;
-}
+a {color: var(--txt-color);}
+
 /*레이아웃*/
 .grid {display: grid; width: 100%; height: 100%; 
   grid-template-columns: var(--side-width) 1fr;
@@ -99,12 +110,19 @@ header .right {display: flex; align-items: center; justify-content: space-betwee
 .srh_box {display: flex; align-items: center; width: 300px; height: 42px; padding: 0 12px 0 24px; background: #fff; border-radius: 24px;}
 .srh_box input {width: 100%; height: 100%; background: 0; border: 0; font-size: 16px; outline: none;} 
 .srh_box button {height: 24px; width: 24px; padding: 0; border: 0; background: 0; flex-shrink: 0;} 
+
+.info_box {display: flex; align-items: center;}
+.info_box > div {margin-left: 20px;}
+.themechg {}
+
+
+
 .ib_img {position: relative; width: 38px; height: 38px; background-color: #ccc; background-image: url(../../resources/images/icon_id.png); background-repeat: no-repeat; background-position: center; background-size: 28px; border-radius: 50%;}
 .ib_list {position: absolute; top: 54px; right: 0; padding: 20px; background: #fff; border-radius: 5px; box-shadow: 0 3px 3px rgba(0,0,0,.6); display: none; z-index: 99;}
 .ib_list li {margin-bottom: 16px; text-align: right;}
 .ib_list li:last-of-type {margin-bottom: 0;}
 .ib_list a {font-size: 16px; color: #000; text-decoration: none; white-space: nowrap; transition: color .2s;}
-.ib_list a:hover {font-weight: 700; color: #FD9F28;}
+.ib_list a:hover {font-weight: 700; color: var(--main-color);}
 .ib_list.on {display: block;}
 .ib_list:after {content: ''; position: absolute; top: -18px; right: 5px; width: 0;height: 0; border-right: 10px solid transparent;border-left: 10px solid transparent; border-bottom: 10px solid #fff; border-top: 10px solid transparent;} 
 
@@ -117,7 +135,9 @@ nav li p {height: 24px; padding-left: 8px; line-height: 24px;}
 nav li.on a {background: #d3e3fd; font-weight: 700;}
 
 /*페이지*/
-h2 {padding-bottom: 16px; font-size: 18px; font-weight: 700;}
+h2 {position: relative; display: inline-block; margin-bottom: 16px; font-size: 18px; font-weight: 700;}
+h2 span {position: relative; z-index: 2;}
+h2:before {content: ''; position: absolute; bottom: 0; left: -3%; width: 106%; height: 8px; background: var(--main-color); border-radius: 8px; opacity: 0.7; z-index: 1;}
 .movielist {padding-bottom: 20px;}
 .movielist ul {display: grid; grid-template-columns: repeat(5, 1fr);  gap: 16px;}
 .movielist ul li {position: relative; width: 100%; height: auto; box-shadow: 0 3px 3px rgba(0,0,0,.6); cursor: pointer;}
@@ -135,7 +155,7 @@ h2 {padding-bottom: 16px; font-size: 18px; font-weight: 700;}
 .tab_main li {overflow: hidden; position: relative; text-align: center;}
 .tab_main li a {display: block; padding: 8px 16px; color: #000; text-decoration: none;  transition: all .3s;}
 .tab_main li.on a {position: relative; color: #fff; z-index: 2;}
-.tab_main li:after {content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 100%; background: #FD9F28; z-index: 1; transition: all .1s;}
+.tab_main li:after {content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 100%; background: var(--main-color); z-index: 1; transition: all .1s;}
 .tab_main li.on:after {top: 0; transition: all cubic-bezier(.99,-0.08,.35,1.51) .6s;}
 
 
