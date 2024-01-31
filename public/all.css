@@ -75,11 +75,15 @@ table {
 }
  :root[color-theme='light'] {
   --bg-color: #f6f8fc;
+  --paper-color: #fff;
+  --subbg-color: #d3e3fd;
   --txt-color: #202124;
   --main-color: #FD9F28;
 }
 :root[color-theme='dark'] {
   --bg-color: #303031;
+  --paper-color: #000;
+  --subbg-color: #d3e3fd;
   --txt-color: #fff;
   --main-color: #FD9F28;
 }
@@ -87,6 +91,8 @@ table {
 body, html {height: 100%; width: 100%; overflow: hidden; background: var(--bg-color); color: var(--txt-color);}
 input:disabled,
 button:disabled {opacity: .6;}
+input, button {box-sizing: border-box;}
+input::placeholder {color: #999;}
 button {cursor: pointer;}
 a {color: var(--txt-color);}
 
@@ -99,8 +105,8 @@ a {color: var(--txt-color);}
   "nav section";}
 header {grid-area: header; display: flex; align-items: center;}
 nav {grid-area: nav; padding: 16px;}
-section {grid-area: section; overflow: auto; margin-right: 16px; margin-bottom: 16px; background-color: #fff; border-radius: 12px;}
-.wrap {max-width: 1280px; width: 100%; height: 100%; margin: 0 auto; padding: 32px;}
+section {grid-area: section; overflow: auto; margin-right: 16px; margin-bottom: 16px; background-color: var(--paper-color); border-radius: 12px;}
+.wrap {min-width: 600px; max-width: 1280px; width: 100%; height: 100%; margin: 0 auto; padding: 32px;}
 
 /*header*/
 header .logo {width: var(--side-width); padding: 0 16px;}
@@ -112,16 +118,21 @@ header .right {display: flex; align-items: center; justify-content: space-betwee
 .srh_box button {height: 24px; width: 24px; padding: 0; border: 0; background: 0; flex-shrink: 0;} 
 
 .info_box {display: flex; align-items: center;}
-.info_box > div {margin-left: 20px;}
-.themechg {}
-
+.info_box > div {margin-left: 8px;}
+.themechg {overflow: hidden; width: 38px; height: 38px; border-radius: 50%;}
+.tchg_ck {width: 100%; height: 100%;}
+.tchg_ck input {display: none;}
+.tchg_ck label {display: block; width: 100%; height: 100%; background-color: var(--paper-color);}
+.tchg_ck label span {border: 0; padding: 0; margin: 0; position: absolute !important; height: 1px;  width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%);white-space: nowrap;}
+.tchg_ck input[type=checkbox] + label {background-image: url(../../resources/images/icon_dark.png); background-size: 22px; background-repeat: no-repeat; background-position: center;}
+.tchg_ck input[type=checkbox]:checked + label {background-image: url(../../resources/images/icon_light.png); background-size: 28px; background-repeat: no-repeat; background-position: center;}
 
 
 .ib_img {position: relative; width: 38px; height: 38px; background-color: #ccc; background-image: url(../../resources/images/icon_id.png); background-repeat: no-repeat; background-position: center; background-size: 28px; border-radius: 50%;}
 .ib_list {position: absolute; top: 54px; right: 0; padding: 20px; background: #fff; border-radius: 5px; box-shadow: 0 3px 3px rgba(0,0,0,.6); display: none; z-index: 99;}
 .ib_list li {margin-bottom: 16px; text-align: right;}
 .ib_list li:last-of-type {margin-bottom: 0;}
-.ib_list a {font-size: 16px; color: #000; text-decoration: none; white-space: nowrap; transition: color .2s;}
+.ib_list a {font-size: 16px; text-decoration: none; white-space: nowrap; transition: color .2s;}
 .ib_list a:hover {font-weight: 700; color: var(--main-color);}
 .ib_list.on {display: block;}
 .ib_list:after {content: ''; position: absolute; top: -18px; right: 5px; width: 0;height: 0; border-right: 10px solid transparent;border-left: 10px solid transparent; border-bottom: 10px solid #fff; border-top: 10px solid transparent;} 
@@ -130,9 +141,12 @@ header .right {display: flex; align-items: center; justify-content: space-betwee
 
 /*nav*/
 nav li {}
-nav li a {display: flex; align-items: center; width: 100%; height: 38px; padding: 0 12px; color: #000; border-radius: 12px; text-decoration: none;}
-nav li p {height: 24px; padding-left: 8px; line-height: 24px;}
-nav li.on a {background: #d3e3fd; font-weight: 700;}
+nav li a {display: block; width: 100%; height: 38px; padding-left: 34px; background-size: 24px; background-position: left 12px center; background-repeat: no-repeat; color: #000; border-radius: 12px; text-decoration: none;}
+nav li:nth-child(1) a {background-image: url(../../resources/images/icon_menu01.png);}
+nav li:nth-child(2) a {background-image: url(../../resources/images/icon_menu02.png);}
+nav li:nth-child(3) a {background-image: url(../../resources/images/icon_menu03.png);}
+nav li p {padding-left: 8px; line-height: 38px;}
+nav li.on a {background-color: var(--subbg-color); font-weight: 700;}
 
 /*페이지*/
 h2 {position: relative; display: inline-block; margin-bottom: 16px; font-size: 18px; font-weight: 700;}
@@ -165,10 +179,12 @@ h2:before {content: ''; position: absolute; bottom: 0; left: -3%; width: 106%; h
 /*로그인*/
 .loginwrap {width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;}
 .login {width: 300px;}
-.login > div {display: flex; align-items: center; padding-bottom: 30px;}
+.login > div {display: flex; align-items: center; margin-bottom: 12px;}
 .login label {display: inline-block; width: 80px; font-size: 14px; flex-shrink: 0;}
 .login input {width: 100%; height: 40px; padding: 0 16px; border: 1px solid #999; box-shadow: 0 0 0 transparent; background: 0; border-radius: 5px;}
-.btn_login {width: 100%; height: 40px; background: #d3e3fd; border: 0; color: #000; border-radius: 5px;}
+.login .btn_login {margin: 18px 0 12px;}
+
+.btn_login {width: 100%; height: 40px; background: var(--subbg-color); border: 0; color: #000; border-radius: 5px;}
 .linkwrap {display: flex; align-items: center; justify-content: center;}
 .linkwrap a {position: relative; margin-right: 20px; font-size: 14px; color: #666;}
 .linkwrap a:after {content: ''; position: absolute; top: 1px; right: -10px; width: 1px; height: 10px; background: #999;}
@@ -180,10 +196,23 @@ input:required:after {content: '*'; position: absolute; top: 0; right: 0; font-s
 
 /*회원가입*/
 .join {width: 400px;}
-.join > div {display: flex; align-items: center; padding-bottom: 12px;}
+.join > div {position: relative; display: flex; align-items: center; margin-bottom: 12px;}
+.join > div > div {display: flex; flex-direction: column; width: 100%;}
 .join label {display: inline-block; width: 120px; font-size: 14px; flex-shrink: 0;}
-.join input {width: 100%; height: 30px; padding: 0 16px; border: 1px solid #999; box-shadow: 0 0 0 transparent; background: 0; border-radius: 5px;}
+.join input {width: 100%; height: 40px; padding: 0 16px; border: 1px solid #999; box-shadow: 0 0 0 transparent; background: 0; border-radius: 5px;}
+.join .txt {padding-top: 5px; font-size: 13px; color: #666;}
+.join .txt.warn {color: #f00;}
 .join .btn_login {margin-top: 18px;}
+.btn_idck {height: 40px; margin-left: 4px; padding: 0 8px; background: 0; border: 1px solid #999; border-radius: 5px; font-size: 14px; flex-shrink: 0; transition: all .2s;}
+.btn_idck:hover {background: #999; color: #fff;}
+
+
+
+/*회원가입*/
+.mask {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.7); z-index: 99; display: none;}
+.popup {position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 100; display: none;}
+.detailpop {}
+
 
 /* 테블릿 세로 (해상도 768px ~ 1023px)*/
 @media all and (max-width:1023px) { 
