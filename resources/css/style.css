@@ -47,6 +47,39 @@ input::placeholder {color: #999;}
 button {cursor: pointer;}
 a {color: var(--txt-color);}
 
+/*로딩*/
+.loadwrap {position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0,0,0,.7); display: none; align-items: center; justify-content: center; z-index: 9999;}
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #FFF;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-bottom: 4px solid var(--main-color);
+  border-left: 4px solid transparent;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
 /*레이아웃*/
 .grid {display: grid; width: 100%; height: 100%; 
   grid-template-columns: var(--side-width) 1fr;
@@ -148,7 +181,8 @@ input:required:after {content: '*'; position: absolute; top: 0; right: 0; font-s
 /*회원가입*/
 .join {width: 400px;}
 .join > div {position: relative; display: flex; align-items: center; margin-bottom: 12px;}
-.join > div > div {display: flex; flex-direction: column; width: 100%;}
+.join .txtbox {display: flex; flex-direction: column; width: 100%;}
+.join .txtbox > div {display: flex; align-items: center;}
 .join label {display: inline-block; width: 120px; font-size: 14px; flex-shrink: 0;}
 .join input {width: 100%; height: 40px; padding: 0 16px; border: 1px solid #999; box-shadow: 0 0 0 transparent; background: 0; border-radius: 5px;}
 .join .txt {padding-top: 5px; font-size: 13px; color: #666;}
@@ -159,10 +193,22 @@ input:required:after {content: '*'; position: absolute; top: 0; right: 0; font-s
 
 
 
-/*회원가입*/
+/*팝업*/
 .mask {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.7); z-index: 99; display: none;}
 .popup {position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 100; display: none;}
-.detailpop {}
+.detailpop {position: relative; width: 600px; background: var(--paper-color);}
+.detailpop:after {content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 60px; background: linear-gradient(to bottom, #000, transparent); z-index: 2;}
+.btn_close {width: 24px; height: 24px; background: url(../../resources/images/icon_close_w.png) no-repeat; background-size: contain; border: 0;}
+.posi_rgh {position: absolute; top: 16px; right: 16px; z-index: 10;}
+.img_mv {width: 100%; height: 300px;}
+.img_mv img {width: 100%; height: 100%; object-fit: cover; object-position: top;}
+.info_mv {padding: 16px;}
+.moviedtit {padding-bottom: 4px; font-size: 24px; font-weight: 700; line-height: 26px;}
+.moviedrdate {font-size: 14px; color: #999;}
+.moviedinfo {}
+
+
+
 
 
 /* 테블릿 세로 (해상도 768px ~ 1023px)*/

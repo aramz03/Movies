@@ -24,19 +24,27 @@
           <form class="join">
             <div>
               <label for="id">이메일</label>
-              <input type="email" id="id" required placeholder="예) movies123@naver.com">
-              <button class="btn_idck">중복확인</button>
+              <div class="txtbox">
+                <div>
+                  <input type="email" id="id" required placeholder="예) movies123@naver.com">
+                  <button class="btn_idck">중복확인</button>
+                </div>
+                <!-- <p class="txt">사용가능한 이메일입니다.</p> -->
+              </div>
             </div>
             <div>
               <label for="pw">비밀번호</label>
-              <div>
+              <div  class="txtbox">
                 <input type="password" id="pw" required placeholder="비밀번호">
                 <p class="txt">비밀번호는 8~12자로 되어야 합니다.</p>
               </div>
             </div>
             <div>
               <label for="pw">비밀번호 확인</label>
-              <input type="password" id="pw" required>
+              <div  class="txtbox">
+                <input type="password" id="pw" required placeholder="비밀번호 확인">
+                <!-- <p class="txt warn">비밀번호가 일치하지 않습니다.</p> -->
+              </div>
             </div>
             <div>
               <button type="submit" class="btn_login">회원가입</button>

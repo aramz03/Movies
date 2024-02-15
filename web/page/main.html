@@ -11,6 +11,10 @@
 </head>
 
 <body>
+  <div class="loadwrap" id="loading">
+    <span class="loader"></span>
+  </div>
+
   <div class="grid">
     <!--  header -->
     <header id="header"></header>
@@ -22,7 +26,7 @@
     <!--  section -->
     <section>
       <div class="wrap">
-        <h2><span>오늘 뜨는 영화</span></h2>
+        <h2><span id="mainTit">오늘 뜨는 영화</span></h2>
         <div class="movielist">
           <ul id="allList">
 
@@ -36,7 +40,19 @@
 
   <div class="mask"></div>
   <div class="popup">
-    <div class="detailpop"></div>
+    <div class="detailpop">
+      <button class="posi_rgh btn_close js-popclose"></button>
+      <div id="dpContent">
+        <div class="img_mv">
+          <img src="" alt="">
+        </div>
+        <div class="info_mv">
+          <p class="moviedtit"></p>
+          <p class="moviedrdate"></p>
+          <p class="moviedinfo"></p>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
