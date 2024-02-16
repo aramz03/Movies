@@ -26,11 +26,21 @@
     <!--  section -->
     <section>
       <div class="wrap">
-        <h2><span id="mainTit">오늘 뜨는 영화</span></h2>
+        <h2><span id="mainTit">지금 인기 영화</span></h2>
         <div class="movielist">
           <ul id="allList">
 
           </ul>
+          <button class="btn_more">
+            <svg width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="#999" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 5l0 14" />
+              <path d="M5 12l14 0" />
+            </svg>
+            더보기
+          </button>
         </div>
       </div>
     </section>
@@ -47,9 +57,23 @@
           <img src="" alt="">
         </div>
         <div class="info_mv">
+          <strong class="moviedavgwrap"><span>평점</span><span class="moviedavg"></span></strong>
           <p class="moviedtit"></p>
           <p class="moviedrdate"></p>
           <p class="moviedinfo"></p>
+          <p class="moviedother">주요 출연진 : <span class="moviedactor"></span></p>
+          <p class="moviedother">장르 : <span class="moviedgenre"></span></p>
+          <p class="moviedother">키워드 : <span class="moviedkeyword"></span></p>
+        </div>
+        <div class="btn_mv">
+          <div class="like_ck">
+            <input type="checkbox" id="LikeCk">
+            <label for="LikeCk"><span>보고싶어요</span></label>
+          </div>
+          <div class="watch_ck">
+            <input type="checkbox" id="WatchCk">
+            <label for="WatchCk"><span>봤어요</span></label>
+          </div>
         </div>
       </div>
     </div>
